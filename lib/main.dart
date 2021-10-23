@@ -12,8 +12,9 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: Text('Noticias - Examen - App'),
+          backgroundColor: Colors.orange,
         ),
-        body: HomeScreen(),
+        body: HomeScreen(), 
       ),
     );
   }
