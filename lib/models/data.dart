@@ -3,7 +3,7 @@ class Data {
   String content = '';
   String date = '';
   String imageUrl = '';
-  String readMoreUrl = '';
+  String? readMoreUrl = '';
   String time = '';
   String title = '';
   String url = '';
@@ -24,7 +24,7 @@ class Data {
     content = json['content'];
     date = json['date'];
     imageUrl = json['imageUrl'];
-    readMoreUrl = json['readMoreUrl'];
+    readMoreUrl = (json['readMoreUrl']==null)?'':json['readMoreUrl'];
     time = json['time'];
     title = json['title'];
     url = json['url'];
