@@ -58,12 +58,11 @@ class _NoticeScreenState extends State<NoticeScreen> {
                   width: 200,
                   height: 200,
                   fit: BoxFit.cover
-                  
                 ),
               ),
             ],
           ),
-          SizedBox(height: 20,),
+          SizedBox(height: 15,),
           Expanded(
             child: Container(
               child: Row(
@@ -73,106 +72,158 @@ class _NoticeScreenState extends State<NoticeScreen> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
-                        Row(
-                          children: <Widget>[
-                            Text(
-                              'Titulo: ', 
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold
-                              )
-                            ),
-                            Text(
-                              _data.title,
-                              style: TextStyle(
-                                fontSize: 14,
-                              ),
-                            ),
-                          ],
-                        ),
                         SizedBox(height: 10,),
                         Row(
                           children: <Widget>[
-                            Text(
-                              'Contenido: ', 
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold
-                              )
-                            ),
-                            Center(
+                            Container(
                               child: Text(
-                                _data.content, 
+                                'Titulo: ', 
                                 style: TextStyle(
-                                  fontSize: 14,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                )
+                              ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.only(left: 33),
+                              constraints: BoxConstraints(maxWidth: 320),
+                              child: Text(
+                                (_data.title == null) ? " ": _data.title,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.black87,
+                                  fontSize: 16
                                 ),
-                              ),
+                              )
                             ),
                           ],
                         ),
                         SizedBox(height: 10,),
                         Row(
                           children: <Widget>[
-                            Text(
-                              'Fecha: ', 
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold
-                              )
-                            ),
-                            Text(
-                              _data.date, 
-                              style: TextStyle(
-                                fontSize: 14,
+                            Container(
+                              child: Text(
+                                'Contenido: ', 
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                )
                               ),
+                            ),
+                            Container(
+                              constraints: BoxConstraints(maxWidth: 280),
+                              child: Text(
+                                (_data.content == null) ? " ": _data.content,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.black87,
+                                  fontSize: 16
+                                ),
+                              )
                             ),
                           ],
                         ),
                         SizedBox(height: 10,),
                         Row(
                           children: <Widget>[
-                            Text(
-                              'Hora: ', 
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold
-                              )
-                            ),
-                            Text(
-                              _data.time, 
-                              style: TextStyle(
-                                fontSize: 14,
+                            Container(
+                              child: Text(
+                                'Fecha: ', 
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                )
                               ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.only(left: 30),
+                              constraints: BoxConstraints(maxWidth: 250),
+                              child: Text(
+                                (_data.date == null) ? " ": _data.date,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.black87,
+                                  fontSize: 16
+                                ),
+                              )
                             ),
                           ],
                         ),
                         SizedBox(height: 10,),
                         Row(
                           children: <Widget>[
-                            Text(
-                              'Url: ', 
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold
-                              )
-                            ),
-                            Text(
-                              _data.url, 
-                              style: TextStyle(
-                                fontSize: 14,
+                            Container(
+                              child: Text(
+                                'Hora: ', 
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                )
                               ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.only(left: 40),
+                              constraints: BoxConstraints(maxWidth: 250),
+                              child: Text(
+                                (_data.time == null) ? " ": _data.time,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.black87,
+                                  fontSize: 16
+                                ),
+                              )
                             ),
                           ],
                         ),
                         SizedBox(height: 10,),
                         Row(
                           children: <Widget>[
-                            Text(
-                              'Ver más: ', 
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold
+                            Container(
+                              child: Text(
+                                'Url: ', 
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                )
+                              ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.only(left: 50),
+                              constraints: BoxConstraints(maxWidth: 350),
+                              child: Text(
+                                (_data.url == null) ? " ": _data.url,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.black87,
+                                  fontSize: 16
+                                ),
                               )
                             ),
-                            Text(
-                              _data.readMoreUrl.toString(), 
-                              style: TextStyle(
-                                fontSize: 14,
+                          ],
+                        ),
+                        SizedBox(height: 10,),
+                        Row(
+                          children: <Widget>[
+                            Container(
+                              child: Text(
+                                'Ver más: ', 
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                )
                               ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.only(left: 10),
+                              constraints: BoxConstraints(maxWidth: 300),
+                              child: Text(
+                                (_data.readMoreUrl.toString() == null) ? " ": _data.readMoreUrl.toString(),
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.black87,
+                                  fontSize: 16
+                                ),
+                              )
                             ),
                           ],
                         ),
@@ -187,5 +238,4 @@ class _NoticeScreenState extends State<NoticeScreen> {
       ),
     );
   }
-
 }

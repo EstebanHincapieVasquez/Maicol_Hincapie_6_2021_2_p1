@@ -23,6 +23,7 @@ class _CategorysScreenState extends State<CategorysScreen> {
   bool _showLoader = false;
   bool _isFiltered = false;
   String _search = '';
+  static String categoriaSeleccionada = '';
 
   @override
   void initState() {
@@ -44,7 +45,7 @@ class _CategorysScreenState extends State<CategorysScreen> {
   }
 
   Widget _showButtons() {
-    return Container(
+    return SingleChildScrollView(
       padding: EdgeInsets.all(5),
       child: Column(
         mainAxisSize: MainAxisSize.max,
@@ -86,7 +87,7 @@ class _CategorysScreenState extends State<CategorysScreen> {
         minWidth: 400,
         height: 40,
         color: Colors.orange,
-        child: Text('Todas las noticias', style: TextStyle(color: Colors.black)),
+        child: Text('Todas las noticias', style: TextStyle(color: Colors.black, fontSize: 20)),
         onPressed: () => _category('all'),
       ),
     );
@@ -99,7 +100,7 @@ class _CategorysScreenState extends State<CategorysScreen> {
         minWidth: 400,
         height: 40,
         color: Colors.orange,
-        child: Text('Noticias nacionales', style: TextStyle(color: Colors.black)),
+        child: Text('Noticias nacionales', style: TextStyle(color: Colors.black, fontSize: 20)),
         onPressed: () => _category('national'),
       ),
     );
@@ -112,7 +113,7 @@ class _CategorysScreenState extends State<CategorysScreen> {
         minWidth: 400,
         height: 40,
         color: Colors.orange,
-        child: Text('Noticias de negocios', style: TextStyle(color: Colors.black)),
+        child: Text('Noticias de negocios', style: TextStyle(color: Colors.black, fontSize: 20)),
         onPressed: () => _category('business'),
       ),
     );
@@ -125,7 +126,7 @@ class _CategorysScreenState extends State<CategorysScreen> {
         minWidth: 400,
         height: 40,
         color: Colors.orange,
-        child: Text('Noticias de deportes', style: TextStyle(color: Colors.black)),
+        child: Text('Noticias de deportes', style: TextStyle(color: Colors.black, fontSize: 20)),
         onPressed: () => _category('sports'),
       ),
     );
@@ -138,7 +139,7 @@ class _CategorysScreenState extends State<CategorysScreen> {
         minWidth: 400,
         height: 40,
         color: Colors.orange,
-        child: Text('Noticias del mundo', style: TextStyle(color: Colors.black)),
+        child: Text('Noticias del mundo', style: TextStyle(color: Colors.black, fontSize: 20)),
         onPressed: () => _category('world'),
       ),
     );
@@ -151,7 +152,7 @@ class _CategorysScreenState extends State<CategorysScreen> {
         minWidth: 400,
         height: 40,
         color: Colors.orange,
-        child: Text('Noticias de política', style: TextStyle(color: Colors.black)),
+        child: Text('Noticias de política', style: TextStyle(color: Colors.black, fontSize: 20)),
         onPressed: () => _category('politics'),
       ),
     );
@@ -164,7 +165,7 @@ class _CategorysScreenState extends State<CategorysScreen> {
         minWidth: 400,
         height: 40,
         color: Colors.orange,
-        child: Text('Noticias de tecnología', style: TextStyle(color: Colors.black)),
+        child: Text('Noticias de tecnología', style: TextStyle(color: Colors.black, fontSize: 20)),
         onPressed: () => _category('technology'),
       ),
     );
@@ -177,7 +178,7 @@ class _CategorysScreenState extends State<CategorysScreen> {
         minWidth: 400,
         height: 40,
         color: Colors.orange,
-        child: Text('Noticias de inauguraciones', style: TextStyle(color: Colors.black)),
+        child: Text('Noticias de inauguraciones', style: TextStyle(color: Colors.black, fontSize: 20)),
         onPressed: () => _category('startup'),
       ),
     );
@@ -190,7 +191,7 @@ class _CategorysScreenState extends State<CategorysScreen> {
         minWidth: 400,
         height: 40,
         color: Colors.orange,
-        child: Text('Noticias de entretenimiento', style: TextStyle(color: Colors.black)),
+        child: Text('Noticias de entretenimiento', style: TextStyle(color: Colors.black, fontSize: 20)),
         onPressed: () => _category('entertainment'),
       ),
     );
@@ -203,7 +204,7 @@ class _CategorysScreenState extends State<CategorysScreen> {
         minWidth: 400,
         height: 40,
         color: Colors.orange,
-        child: Text('Noticias diversas', style: TextStyle(color: Colors.black)),
+        child: Text('Noticias diversas', style: TextStyle(color: Colors.black, fontSize: 20)),
         onPressed: () => _category('miscellaneous'),
       ),
     );
@@ -216,7 +217,7 @@ class _CategorysScreenState extends State<CategorysScreen> {
         minWidth: 400,
         height: 40,
         color: Colors.orange,
-        child: Text('Noticias de hatke', style: TextStyle(color: Colors.black)),
+        child: Text('Noticias de hatke', style: TextStyle(color: Colors.black, fontSize: 20)),
         onPressed: () => _category('hatke'),
       ),
     );
@@ -229,7 +230,7 @@ class _CategorysScreenState extends State<CategorysScreen> {
         minWidth: 400,
         height: 40,
         color: Colors.orange,
-        child: Text('Noticias de ciencia', style: TextStyle(color: Colors.black)),
+        child: Text('Noticias de ciencia', style: TextStyle(color: Colors.black, fontSize: 20)),
         onPressed: () => _category('science'),
       ),
     );
@@ -242,7 +243,7 @@ class _CategorysScreenState extends State<CategorysScreen> {
         minWidth: 400,
         height: 40,
         color: Colors.orange,
-        child: Text('Noticias de automóviles', style: TextStyle(color: Colors.black)),
+        child: Text('Noticias de automóviles', style: TextStyle(color: Colors.black, fontSize: 20)),
         onPressed: () => _category('automobile'),
       ),
     );
@@ -294,7 +295,7 @@ class _CategorysScreenState extends State<CategorysScreen> {
       String? result = await Navigator.push(
       context, 
         MaterialPageRoute(
-          builder: (context) => NoticesScreen(category: category,)
+          builder: (context) => NoticesScreen(category: category, categoriaSeleccionada: categoriaSeleccionada,)
         )
       );
     }

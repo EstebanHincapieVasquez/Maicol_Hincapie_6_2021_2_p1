@@ -10,8 +10,9 @@ import 'package:noticias_examen_app/screens/notice_screen.dart';
 
 class NoticesScreen extends StatefulWidget {
   final Category category;
+  String categoriaSeleccionada;
 
-  NoticesScreen({required this.category,});
+  NoticesScreen({required this.category, required this.categoriaSeleccionada});
 
   @override
   _NoticesScreenState createState() => _NoticesScreenState();
@@ -24,10 +25,11 @@ class _NoticesScreenState extends State<NoticesScreen> {
   bool _isFiltered = false;
   String _search = '';
 
+
    @override
   void initState() {
     super.initState();
-    _getNotices();
+    _getNotices(widget.categoriaSeleccionada);
   }
 
   @override
@@ -54,7 +56,7 @@ class _NoticesScreenState extends State<NoticesScreen> {
     );
   }
 
-  Future<Null> _getNotices() async {
+  Future<void> _getNotices(String categoriaSeleccionada) async {
     setState(() {
       _showLoader = true;
     });
@@ -75,7 +77,7 @@ class _NoticesScreenState extends State<NoticesScreen> {
       return;
     }
 
-    Response response = await ApiHelper.getAllNotices();
+    Response response = await ApiHelper.getNotices(categoriaSeleccionada);
 
     setState(() {
       _showLoader = false;
@@ -123,7 +125,7 @@ class _NoticesScreenState extends State<NoticesScreen> {
 
   Widget _getListView() {
     return RefreshIndicator(
-      onRefresh: _getNotices,
+      onRefresh: () => _getNotices(widget.categoriaSeleccionada),
       child: ListView(
         children: _data.map((e) {
           return Card(
@@ -137,12 +139,16 @@ class _NoticesScreenState extends State<NoticesScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          e.author, 
-                          style: TextStyle(
-                            fontSize: 20,
-                          ),
+                        SizedBox(
+                          width: 350.0,
+                        child: Text(
+                          e.title,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          softWrap: false,
+                          style: TextStyle(color: Colors.black, fontSize: 20.0),
                         ),
+                      ),
                       Icon(Icons.arrow_forward_ios),
                       ],
                     ),
@@ -202,7 +208,7 @@ class _NoticesScreenState extends State<NoticesScreen> {
     setState(() {
       _isFiltered = false;
     });
-    _getNotices();
+    _getNotices(widget.categoriaSeleccionada);
   }
 
   void _filter() {
@@ -212,7 +218,7 @@ class _NoticesScreenState extends State<NoticesScreen> {
 
     List<Data> filteredList = [];
     for (var data in _data) {
-      if (data.author.toLowerCase().contains(_search.toLowerCase())) {
+      if (data.title.toLowerCase().contains(_search.toLowerCase())) {
         filteredList.add(data);
       }
     }
@@ -235,7 +241,7 @@ class _NoticesScreenState extends State<NoticesScreen> {
       )
     );
     if (result == 'yes') {
-      _getNotices();
+      _getNotices(widget.categoriaSeleccionada);
     }
   }
 }

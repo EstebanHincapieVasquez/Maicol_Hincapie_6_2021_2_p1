@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                SizedBox(height: 100,),
+                SizedBox(height: 200,),
                 _showLogo(),
                 SizedBox(height: 100,),
                 _showNoticesButton(),
@@ -44,7 +44,23 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _showNoticesButton() {
-    return Container(
+    return Expanded(
+      flex: -1,
+      child: MaterialButton(
+        minWidth: 300,
+        height: 50,
+        color: Colors.orange,
+        child: Text('Ver Noticias',
+        style: TextStyle(
+          color: Colors.black,
+          fontSize: 30,
+         )
+        ),
+        onPressed: () => _notices(),
+      ),
+    );
+    /*return Container(
+      
       child: ElevatedButton(
         child: Text('Ver Noticias'),
         style: ButtonStyle(
@@ -56,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         onPressed: () => _notices(),
       ),
-    );
+    );*/
   }
   
   void _notices() async {
